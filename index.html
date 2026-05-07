@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparative Civil Procedure — FRCP &amp; CPC Annotated Browsers</title>
+<meta name="description" content="Annotated browsers for comparative civil procedure: the U.S. Federal Rules of Civil Procedure (FRCP) and the French Code de procédure civile (CPC), with cross-references, case law, and academic commentary.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root {
+    --navy: #16213e;
+    --navy-deep: #0f1a2e;
+    --republic: #1b2a4a;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --amber-500: #f59e0b;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--slate-800);
+    background: var(--slate-50);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--republic) 100%);
+    color: #fff;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .header-inner { max-width: 800px; margin: 0 auto; }
+  .header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .header p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── Search ── */
+  .search-section {
+    max-width: 720px;
+    margin: -28px auto 0;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+  }
+  .search-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+    padding: 20px 24px;
+  }
+  .search-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .search-input-row svg {
+    flex-shrink: 0;
+    color: var(--slate-400);
+  }
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    color: var(--slate-800);
+    padding: 8px 0;
+    background: transparent;
+  }
+  .search-input::placeholder { color: var(--slate-400); }
+  .search-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .search-btn {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 7px 18px;
+    border-radius: 6px;
+    border: 1.5px solid var(--slate-200);
+    background: #fff;
+    color: var(--slate-700);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .search-btn:hover {
+    border-color: var(--blue-600);
+    color: var(--blue-600);
+    background: #f0f4ff;
+  }
+  .search-btn.active {
+    border-color: var(--blue-600);
+    background: var(--blue-600);
+    color: #fff;
+  }
+  .search-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--slate-200);
+    align-self: center;
+  }
+
+  /* ── Portal grid ── */
+  .portals {
+    max-width: 960px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 680px) {
+    .portals { grid-template-columns: 1fr; }
+  }
+  .portal-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    border: 1.5px solid var(--slate-200);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .portal-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    border-color: var(--slate-400);
+  }
+  .portal-banner {
+    padding: 28px 24px 20px;
+    color: #fff;
+  }
+  .portal-banner.frcp {
+    background: linear-gradient(135deg, #16213e 0%, #1a2744 100%);
+  }
+  .portal-banner.cpc {
+    background: linear-gradient(135deg, #1b2a4a 0%, #1e3a5f 100%);
+  }
+  .portal-flag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .portal-flag-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .portal-flag-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.6);
+  }
+  .portal-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+  .portal-subtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+  }
+  .portal-body {
+    padding: 20px 24px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .portal-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--slate-500);
+    font-weight: 500;
+  }
+  .portal-links {
+    list-style: none;
+    margin-top: auto;
+    border-top: 1px solid var(--slate-100);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .portal-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--slate-700);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .portal-link:hover {
+    background: var(--slate-100);
+    color: var(--navy);
+  }
+  .portal-link svg {
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+  .portal-link .arrow {
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .portal-link:hover .arrow { opacity: 0.5; }
+
+  .portal-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    transition: opacity 0.15s ease;
+    margin-top: 16px;
+    align-self: flex-start;
+  }
+  .portal-cta:hover { opacity: 0.9; }
+  .portal-cta.frcp { background: var(--navy); }
+  .portal-cta.cpc { background: var(--republic); }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 960px;
+    margin: 48px auto 0;
+    padding: 24px 24px 40px;
+    text-align: center;
+    color: var(--slate-500);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--slate-200);
+  }
+  .footer a { color: var(--slate-600); }
+
+  /* ── Search results overlay ── */
+  .search-results {
+    display: none;
+    margin-top: 16px;
+    max-height: 360px;
+    overflow-y: auto;
+    border-top: 1px solid var(--slate-200);
+    padding-top: 12px;
+  }
+  .search-results.active { display: block; }
+  .result-item {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--slate-700);
+    transition: background 0.15s ease;
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .result-item:last-child { border-bottom: none; }
+  .result-item:hover { background: var(--slate-100); }
+  .result-source {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--slate-400);
+    margin-bottom: 2px;
+  }
+  .result-source.frcp { color: var(--navy); }
+  .result-source.cpc { color: var(--republic); }
+  .result-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .result-desc {
+    font-size: 0.8rem;
+    color: var(--slate-500);
+    margin-top: 2px;
+  }
+  .result-count {
+    font-size: 0.82rem;
+    color: var(--slate-500);
+    margin-bottom: 8px;
+  }
+  .no-results {
+    text-align: center;
+    color: var(--slate-400);
+    padding: 24px 0;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <h1>Comparative Civil Procedure</h1>
+    <p>Annotated browsers for the U.S. Federal Rules of Civil Procedure and the French Code de procédure civile — with cross-references, case law, and academic commentary.</p>
+  </div>
+</header>
+
+<!-- Search -->
+<section class="search-section">
+  <div class="search-card">
+    <div class="search-input-row">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search provisions, articles, cases, commentary..." autocomplete="off">
+    </div>
+    <div class="search-buttons">
+      <button class="search-btn active" data-scope="both" onclick="setScope('both')">Search Both</button>
+      <div class="search-divider"></div>
+      <button class="search-btn" data-scope="frcp" onclick="setScope('frcp')">FRCP Only</button>
+      <button class="search-btn" data-scope="cpc" onclick="setScope('cpc')">CPC Only</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</section>
+
+<!-- Portal Cards -->
+<section class="portals">
+
+  <!-- FRCP -->
+  <div class="portal-card">
+    <div class="portal-banner frcp">
+      <div class="portal-flag">
+        <span class="portal-flag-icon">🇺🇸</span>
+        <span class="portal-flag-label">United States</span>
+      </div>
+      <div class="portal-title">Federal Rules of Civil Procedure</div>
+      <div class="portal-subtitle">Annotated FRCP, FRE, Constitutional Provisions &amp; Federal Statutes</div>
+    </div>
+    <div class="portal-body">
+      <div class="portal-stats">
+        <div class="stat"><span class="stat-num">133</span><span class="stat-label">Provisions</span></div>
+        <div class="stat"><span class="stat-num">40</span><span class="stat-label">Landmark Cases</span></div>
+        <div class="stat"><span class="stat-num">27</span><span class="stat-label">Commentary</span></div>
+        <div class="stat"><span class="stat-num">94</span><span class="stat-label">Local Rules</span></div>
+      </div>
+      <ul class="portal-links">
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/frcp-annotated-browser/#/">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg>
+            Interactive Browser
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/frcp-annotated-browser/content/">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            All Provisions (Static)
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/frcp-annotated-browser/#/cases">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Landmark Cases
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/frcp-annotated-browser/#/commentary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            Academic Commentary
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/frcp-annotated-browser/#/comparative">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+            FRCP ↔ CPC Comparative
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+      </ul>
+      <a class="portal-cta frcp" href="https://vagabondo73.github.io/frcp-annotated-browser/#/">
+        Open FRCP Browser
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- CPC -->
+  <div class="portal-card">
+    <div class="portal-banner cpc">
+      <div class="portal-flag">
+        <span class="portal-flag-icon">🇫🇷</span>
+        <span class="portal-flag-label">France</span>
+      </div>
+      <div class="portal-title">Code de procédure civile</div>
+      <div class="portal-subtitle">CPC annoté avec jurisprudence Judilibre, Légifrance &amp; codes.droit.org</div>
+    </div>
+    <div class="portal-body">
+      <div class="portal-stats">
+        <div class="stat"><span class="stat-num">2,323</span><span class="stat-label">Articles</span></div>
+        <div class="stat"><span class="stat-num">577</span><span class="stat-label">Décisions</span></div>
+        <div class="stat"><span class="stat-num">88</span><span class="stat-label">Arrêts de principe</span></div>
+        <div class="stat"><span class="stat-num">20</span><span class="stat-label">Thèmes comparatifs</span></div>
+      </div>
+      <ul class="portal-links">
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/cpc-annotated-browser/#/">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg>
+            Navigateur interactif
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/cpc-annotated-browser/content/">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            Tous les articles (statique)
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/cpc-annotated-browser/#/leading-cases">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Arrêts de principe
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/cpc-annotated-browser/#/decisions">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            Décisions Judilibre
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="portal-link" href="https://vagabondo73.github.io/cpc-annotated-browser/#/comparative">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+            Vue comparative FRCP ↔ CPC
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </li>
+      </ul>
+      <a class="portal-cta cpc" href="https://vagabondo73.github.io/cpc-annotated-browser/#/">
+        Ouvrir le CPC Annoté
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>Comparative Civil Procedure Course — Brendan Berne</p>
+  <p style="margin-top:4px">
+    <a href="https://vagabondo73.github.io/frcp-annotated-browser/content/">FRCP Static Content</a> · 
+    <a href="https://vagabondo73.github.io/cpc-annotated-browser/content/">CPC Static Content</a>
+  </p>
+</footer>
+
+<script>
+// ── Search data (lazy-loaded from local index) ──
+const BASE = 'https://vagabondo73.github.io';
+
+let searchIndex = [];
+let currentScope = 'both';
+let dataLoaded = false;
+
+async function loadSearchData() {
+  if (dataLoaded) return;
+  try {
+    const raw = await fetch('search-index.json').then(r => r.json());
+    searchIndex = raw.map(e => {
+      // Determine source from type prefix
+      const source = (e.type || '').startsWith('frcp') ? 'frcp' : 'cpc';
+      return {
+        source,
+        title: e.title || '',
+        desc: e.text || '',
+        url: e.url || '',
+      };
+    });
+    dataLoaded = true;
+  } catch (e) {
+    console.error('Failed to load search index:', e);
+  }
+}
+
+function setScope(scope) {
+  currentScope = scope;
+  document.querySelectorAll('.search-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.scope === scope);
+  });
+  runSearch();
+}
+
+function runSearch() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const results = document.getElementById('searchResults');
+  
+  if (!q || q.length < 2) {
+    results.classList.remove('active');
+    results.innerHTML = '';
+    return;
+  }
+
+  const terms = q.split(/\s+/);
+  const filtered = searchIndex.filter(item => {
+    if (currentScope !== 'both' && item.source !== currentScope) return false;
+    const text = (item.title + ' ' + item.desc).toLowerCase();
+    return terms.every(t => text.includes(t));
+  });
+
+  results.classList.add('active');
+
+  if (filtered.length === 0) {
+    results.innerHTML = '<div class="no-results">No results found.</div>';
+    return;
+  }
+
+  const shown = filtered.slice(0, 20);
+  const countText = filtered.length > 20
+    ? `Showing 20 of ${filtered.length} results`
+    : `${filtered.length} result${filtered.length !== 1 ? 's' : ''}`;
+
+  results.innerHTML = `<div class="result-count">${countText}</div>` +
+    shown.map(r => `
+      <a class="result-item" href="${r.url}" target="_blank" rel="noopener">
+        <div class="result-source ${r.source}">${r.source === 'frcp' ? 'FRCP' : 'CPC'}</div>
+        <div class="result-title">${highlight(r.title, terms)}</div>
+        ${r.desc ? `<div class="result-desc">${highlight(r.desc, terms)}</div>` : ''}
+      </a>
+    `).join('');
+}
+
+function highlight(text, terms) {
+  let safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  terms.forEach(t => {
+    if (t.length < 2) return;
+    const re = new RegExp(`(${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    safe = safe.replace(re, '<mark style="background:#fef3c7;padding:0 1px;border-radius:2px">$1</mark>');
+  });
+  return safe;
+}
+
+// ── Init ──
+const input = document.getElementById('searchInput');
+input.addEventListener('focus', loadSearchData);
+input.addEventListener('input', () => {
+  if (!dataLoaded) loadSearchData().then(runSearch);
+  else runSearch();
+});
+</script>
+
+</body>
+</html>
